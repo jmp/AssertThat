@@ -10,7 +10,7 @@ public extension Assertion where Subject: Error & Equatable {
             }
             return self
         }
-        XCTFail("Expected \(subject) to be thrown")
+        XCTFail("Expected \(subject) to be thrown", file: file, line: line)
         return self
     }
 
@@ -19,7 +19,7 @@ public extension Assertion where Subject: Error & Equatable {
             _ = try block()
         } catch {
             if error as? Subject == subject {
-                XCTFail("Expected \(subject) not to be thrown")
+                XCTFail("Expected \(subject) not to be thrown", file: file, line: line)
             }
         }
         return self
