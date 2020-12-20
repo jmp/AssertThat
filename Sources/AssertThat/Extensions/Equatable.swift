@@ -11,23 +11,13 @@ public extension Assertion where Subject: Equatable {
         return self
     }
 
-    @discardableResult func isIn<T>(_ iterable: T, file: StaticString = #filePath, line: UInt = #line) -> Self where T: Sequence {
-        for item in iterable {
-            if item as? Subject == subject {
-                return self
-            }
-        }
-        XCTFail("\(subject) is not in \(iterable)")
+    @discardableResult func isIn<S>(_ sequence: S, file: StaticString = #filePath, line: UInt = #line) -> Self where S: Sequence, Subject == S.Element {
+        XCTAssertTrue(sequence.contains { $0 == subject })
         return self
     }
 
-    @discardableResult func isNotIn<T>(_ iterable: T, file: StaticString = #filePath, line: UInt = #line) -> Self where T: Sequence {
-        for item in iterable {
-            if item as? Subject == subject {
-                XCTFail("\(subject) is in \(iterable)")
-                return self
-            }
-        }
+    @discardableResult func isNotIn<S>(_ sequence: S, file: StaticString = #filePath, line: UInt = #line) -> Self where S: Sequence, Subject == S.Element {
+        XCTAssertFalse(sequence.contains { $0 == subject })
         return self
     }
 }
