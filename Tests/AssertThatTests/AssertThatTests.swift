@@ -1,12 +1,13 @@
 import XCTest
-@testable import AssertThat
+import AssertThat
 
 final class AssertThatTests: XCTestCase {
-    func testExample() {
-        XCTAssertEqual(AssertThat().text, "Hello, World!")
+    func testAssertThatReturnsAssertion() {
+        let assertion = assertThat("dummy") as Any
+        XCTAssertTrue(assertion is Assertion<String>)
     }
 
     static var allTests = [
-        ("testExample", testExample),
+        ("testAssertThatReturnsAssertion", testAssertThatReturnsAssertion),
     ]
 }
