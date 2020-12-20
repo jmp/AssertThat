@@ -1,7 +1,7 @@
 import XCTest
 import AssertThat
 
-final class EquatableAssertionTests: SuppressableTestCase {
+final class EquatableTests: SuppressableTestCase {
     func testIsEqualToSuccess() {
         suppress { assertThat(1).isEqualTo(1) }
         XCTAssertEqual(0, suppressedIssues)

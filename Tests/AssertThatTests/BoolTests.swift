@@ -1,7 +1,7 @@
 import XCTest
 import AssertThat
 
-final class BoolAssertionTests: SuppressableTestCase {
+final class BoolTests: SuppressableTestCase {
     func testIsTrueSuccess() {
         suppress { assertThat(true).isTrue() }
         XCTAssertEqual(0, suppressedIssues)
