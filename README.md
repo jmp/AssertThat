@@ -1,15 +1,17 @@
 # AssertThat
 
-This library tries to make AssertJ-style readable assertions usable Swift.
+This library tries to make AssertJ-style readable assertions usable in Swift.
 
-It is currently experimental and super work in progress.
+It is currently experimental and *super work in progress*.
 
-The idea is that instead of having to write things like `XCTAssertEqual("foo", "bar")` we can write
+## Motivation
+
+The idea is that instead of having to write things like `XCTAssertEqual(someVar, "foo")` we can write
 something like this instead:
 
-    assertThat("foo").isEqualTo("bar")
+    assertThat(someVar).isEqualTo("foo")
 
-This also allows more complicated chains of assertions, for example:
+This also allows more complicated assertion chains, for example:
 
     assertThat("The quick brown fox")
         .startsWith("The")
