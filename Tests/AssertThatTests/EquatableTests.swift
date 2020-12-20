@@ -22,10 +22,43 @@ final class EquatableTests: SuppressableTestCase {
         XCTAssertEqual(1, suppressedIssues)
     }
 
+    func testIsInSuccess() {
+        suppress {
+            assertThat(1).isIn([1, 2, 3])
+            assertThat(1).isIn([1])
+        }
+        XCTAssertEqual(0, suppressedIssues)
+    }
+
+    
+    func testIsInFailure() {
+        suppress {
+            assertThat(1).isIn([])
+            assertThat(0).isIn([1, 2, 3])
+        }
+        XCTAssertEqual(2, suppressedIssues)
+    }
+
+    func testIsNotInSuccess() {
+        suppress {
+            assertThat(1).isNotIn([])
+            assertThat(0).isNotIn([1, 2, 3])
+        }
+        XCTAssertEqual(0, suppressedIssues)
+    }
+
+    
+    func testIsNotInFailure() {
+        suppress { assertThat(1).isNotIn([1]) }
+        XCTAssertEqual(1, suppressedIssues)
+    }
+
     static var allTests = [
         ("testIsEqualToSuccess", testIsEqualToSuccess),
         ("testIsEqualToFailure", testIsEqualToFailure),
         ("testIsNotEqualToPositive", testIsNotEqualToSuccess),
         ("testIsNotEqualToNegative", testIsNotEqualToFailure),
+        ("testIsInSuccess", testIsInSuccess),
+        ("testIsInFailure", testIsInFailure),
     ]
 }
