@@ -42,6 +42,36 @@ final class ComparableTests: SuppressableTestCase {
         XCTAssertEqual(1, suppressedIssues)
     }
 
+    func testIsBetweenSuccess() {
+        suppress {
+            assertThat(1).isBetween(1, 3)
+            assertThat(2).isBetween(1, 3)
+            assertThat(3).isBetween(1, 3)
+        }
+        XCTAssertEqual(0, suppressedIssues)
+    }
+
+    func testIsBetweenFailure() {
+        suppress {
+            assertThat(0).isBetween(1, 3)
+            assertThat(4).isBetween(1, 3)
+        }
+        XCTAssertEqual(2, suppressedIssues)
+    }
+
+    func testIsStrictlyBetweenSuccess() {
+        suppress { assertThat(2).isStrictlyBetween(1, 3) }
+        XCTAssertEqual(0, suppressedIssues)
+    }
+
+    func testIsStrictlyBetweenFailure() {
+        suppress {
+            assertThat(1).isStrictlyBetween(1, 3)
+            assertThat(3).isStrictlyBetween(1, 3)
+        }
+        XCTAssertEqual(2, suppressedIssues)
+    }
+
     static var allTests = [
         ("testIsLessThanSuccess", testIsLessThanSuccess),
         ("testIsLessThanFailure", testIsLessThanFailure),
@@ -51,5 +81,9 @@ final class ComparableTests: SuppressableTestCase {
         ("testIsGreaterThanFailure", testIsGreaterThanFailure),
         ("testIsGreaterThanOrEqualToSuccess", testIsGreaterThanOrEqualToSuccess),
         ("testIsGreaterThanOrEqualToFailure", testIsGreaterThanOrEqualToFailure),
+        ("testIsBetweenSuccess", testIsBetweenSuccess),
+        ("testIsBetweenFailure", testIsBetweenFailure),
+        ("testIsStrictlyBetweenSuccess", testIsStrictlyBetweenSuccess),
+        ("testIsStrictlyBetweenFailure", testIsStrictlyBetweenFailure),
     ]
 }
