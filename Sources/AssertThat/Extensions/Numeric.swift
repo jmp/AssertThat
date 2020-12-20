@@ -10,23 +10,25 @@ public extension Assertion where Subject: Numeric {
         XCTAssertNotEqual(subject, 0)
         return self
     }
+}
 
-    @discardableResult func isPositive(file: StaticString = #filePath, line: UInt = #line) -> Self where Subject: Comparable {
+public extension Assertion where Subject: Numeric & Comparable {
+    @discardableResult func isPositive(file: StaticString = #filePath, line: UInt = #line) -> Self {
         XCTAssertGreaterThan(subject, 0)
         return self
     }
 
-    @discardableResult func isNotPositive(file: StaticString = #filePath, line: UInt = #line) -> Self where Subject: Comparable {
+    @discardableResult func isNotPositive(file: StaticString = #filePath, line: UInt = #line) -> Self {
         XCTAssertLessThanOrEqual(subject, 0)
         return self
     }
 
-    @discardableResult func isNegative(file: StaticString = #filePath, line: UInt = #line) -> Self where Subject: Comparable {
+    @discardableResult func isNegative(file: StaticString = #filePath, line: UInt = #line) -> Self {
         XCTAssertLessThan(subject, 0)
         return self
     }
 
-    @discardableResult func isNotNegative(file: StaticString = #filePath, line: UInt = #line) -> Self where Subject: Comparable {
+    @discardableResult func isNotNegative(file: StaticString = #filePath, line: UInt = #line) -> Self {
         XCTAssertGreaterThanOrEqual(subject, 0)
         return self
     }
