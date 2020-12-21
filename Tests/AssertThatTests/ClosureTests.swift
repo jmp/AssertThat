@@ -2,15 +2,11 @@ import XCTest
 import AssertThat
 
 final class ClosureTests: SuppressableTestCase {
-    private enum TestError: Error {
-        case test
-    }
+    private struct TestError: Error {}
 
     func testThrowsAnErrorSuccess() {
         suppress {
-            assertThat {
-                throw TestError.test
-            }.throwsAnError()
+            assertThat { throw TestError() }.throwsAnError()
         }
         XCTAssertEqual(0, suppressedIssues)
     }
@@ -31,9 +27,7 @@ final class ClosureTests: SuppressableTestCase {
 
     func testDoesNotThrowAnErrorFailure() {
         suppress {
-            assertThat {
-                throw TestError.test
-            }.doesNotThrowAnError()
+            assertThat { throw TestError() }.doesNotThrowAnError()
         }
         XCTAssertEqual(1, suppressedIssues)
     }
