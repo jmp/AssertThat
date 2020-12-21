@@ -12,12 +12,12 @@ public extension Assertion where Subject: Equatable {
     }
 
     @discardableResult func isIn<S>(_ sequence: S, file: StaticString = #filePath, line: UInt = #line) -> Self where S: Sequence, Subject == S.Element {
-        XCTAssertTrue(sequence.contains { $0 == subject }, file: file, line: line)
+        XCTAssertTrue(sequence.contains { $0 == subject }, "\(sequence) does not contain \(subject)", file: file, line: line)
         return self
     }
 
     @discardableResult func isNotIn<S>(_ sequence: S, file: StaticString = #filePath, line: UInt = #line) -> Self where S: Sequence, Subject == S.Element {
-        XCTAssertFalse(sequence.contains { $0 == subject }, file: file, line: line)
+        XCTAssertFalse(sequence.contains { $0 == subject }, "\(sequence) contains \(subject)", file: file, line: line)
         return self
     }
 }
