@@ -2,11 +2,14 @@ import XCTest
 import AssertThat
 
 final class ClosureTests: SuppressableTestCase {
-    private struct TestError: Error {}
+    private enum TestError: Error {
+        case test
+        case other
+    }
 
     func testThrowsAnErrorSuccess() {
         suppress {
-            assertThat { throw TestError() }.throwsAnError()
+            assertThat { throw TestError.test }.throwsAnError()
         }
         XCTAssertEqual(0, suppressedIssues)
     }
@@ -27,7 +30,37 @@ final class ClosureTests: SuppressableTestCase {
 
     func testDoesNotThrowAnErrorFailure() {
         suppress {
-            assertThat { throw TestError() }.doesNotThrowAnError()
+            assertThat { throw TestError.test }.doesNotThrowAnError()
+        }
+        XCTAssertEqual(1, suppressedIssues)
+    }
+    
+    func testThrowsSuccess() {
+        suppress {
+            assertThat { throw TestError.test }.throws(TestError.test)
+        }
+        XCTAssertEqual(0, suppressedIssues)
+    }
+
+    func testThrowsFailure() {
+        suppress {
+            assertThat {}.throws(TestError.other)
+            assertThat { throw TestError.test }.throws(TestError.other)
+        }
+        XCTAssertEqual(2, suppressedIssues)
+    }
+
+    func testDoesNotThrowSuccess() {
+        suppress {
+            assertThat {}.doesNotThrow(TestError.test)
+            assertThat { throw TestError.other }.doesNotThrow(TestError.test)
+        }
+        XCTAssertEqual(0, suppressedIssues)
+    }
+
+    func testDoesNotThrowFailure() {
+        suppress {
+            assertThat { throw TestError.test }.doesNotThrow(TestError.test)
         }
         XCTAssertEqual(1, suppressedIssues)
     }
@@ -37,5 +70,9 @@ final class ClosureTests: SuppressableTestCase {
         ("testThrowsAnErrorFailure", testThrowsAnErrorFailure),
         ("testDoesNotThrowAnErrorSuccess", testDoesNotThrowAnErrorSuccess),
         ("testDoesNotThrowAnErrorFailure", testDoesNotThrowAnErrorFailure),
+        ("testThrowsSuccess", testThrowsSuccess),
+        ("testThrowsFailure", testThrowsFailure),
+        ("testDoesNotThrowSuccess", testDoesNotThrowSuccess),
+        ("testDoesNotThrowFailure", testDoesNotThrowFailure),
     ]
 }
