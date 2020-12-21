@@ -1,7 +1,7 @@
 import XCTest
 import AssertThat
 
-final class AnyOptionalTests: SuppressableTestCase {
+final class OptionalTests: SuppressableTestCase {
     func testIsNilSuccess() {
         suppress { assertThat(nil as Bool?).isNil() }
         XCTAssertEqual(0, suppressedIssues)
