@@ -7,6 +7,8 @@ final class ClosureTests: SuppressableTestCase {
         case other
     }
 
+    private struct OtherError: Error {}
+
     func testThrowsAnErrorSuccess() {
         suppress {
             assertThat { throw TestError.test }.throwsAnError()
@@ -65,6 +67,36 @@ final class ClosureTests: SuppressableTestCase {
         XCTAssertEqual(1, suppressedIssues)
     }
 
+    func testThrowsErrorTypeSuccess() {
+        suppress {
+            assertThat { throw TestError.test }.throws(TestError.self)
+        }
+        XCTAssertEqual(0, suppressedIssues)
+    }
+
+    func testThrowsErrorTypeFailure() {
+        suppress {
+            assertThat {}.throws(TestError.self)
+            assertThat { throw OtherError() }.throws(TestError.self)
+        }
+        XCTAssertEqual(2, suppressedIssues)
+    }
+
+    func testDoesNotThrowErrorTypeSuccess() {
+        suppress {
+            assertThat {}.doesNotThrow(TestError.self)
+            assertThat { throw OtherError() }.doesNotThrow(TestError.self)
+        }
+        XCTAssertEqual(0, suppressedIssues)
+    }
+
+    func testDoesNotThrowErrorTypeFailure() {
+        suppress {
+            assertThat { throw TestError.test }.doesNotThrow(TestError.self)
+        }
+        XCTAssertEqual(1, suppressedIssues)
+    }
+
     static var allTests = [
         ("testThrowsAnErrorSuccess", testThrowsAnErrorSuccess),
         ("testThrowsAnErrorFailure", testThrowsAnErrorFailure),
@@ -74,5 +106,9 @@ final class ClosureTests: SuppressableTestCase {
         ("testThrowsFailure", testThrowsFailure),
         ("testDoesNotThrowSuccess", testDoesNotThrowSuccess),
         ("testDoesNotThrowFailure", testDoesNotThrowFailure),
+        ("testThrowsErrorTypeSuccess", testThrowsErrorTypeSuccess),
+        ("testThrowsErrorTypeFailure", testThrowsErrorTypeFailure),
+        ("testDoesNotThrowErrorTypeSuccess", testDoesNotThrowErrorTypeSuccess),
+        ("testDoesNotThrowErrorTypeFailure", testDoesNotThrowErrorTypeFailure),
     ]
 }
