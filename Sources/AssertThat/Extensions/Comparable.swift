@@ -26,8 +26,18 @@ public extension Assertion where Subject: Comparable {
         return self
     }
 
+    @discardableResult func isNotBetween(_ start: Subject, _ end: Subject, file: StaticString = #filePath, line: UInt = #line) -> Self {
+        XCTAssertFalse(start <= subject && subject <= end, "\(subject) is strictly between \(start) and \(end)", file: file, line: line)
+        return self
+    }
+
     @discardableResult func isStrictlyBetween(_ start: Subject, _ end: Subject, file: StaticString = #filePath, line: UInt = #line) -> Self {
         XCTAssertTrue(start < subject && subject < end, "\(subject) is not strictly between \(start) and \(end)", file: file, line: line)
+        return self
+    }
+
+    @discardableResult func isNotStrictlyBetween(_ start: Subject, _ end: Subject, file: StaticString = #filePath, line: UInt = #line) -> Self {
+        XCTAssertFalse(start < subject && subject < end, "\(subject) is between \(start) and \(end)", file: file, line: line)
         return self
     }
 }
