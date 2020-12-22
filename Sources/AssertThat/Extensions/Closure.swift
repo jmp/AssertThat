@@ -25,11 +25,8 @@ public extension Assertion where Subject == () throws -> Any {
         do {
             _ = try expression()()
             XCTFail("\(expectedError) was not thrown", file: file, line: line)
-            return self
         } catch {
-            if error as? T != expectedError {
-                XCTFail("\(error) is not \(expectedError)", file: file, line: line)
-            }
+            XCTAssertTrue(error as? T == expectedError, "\(error) is not \(expectedError)", file: file, line: line)
         }
         return self
     }
@@ -38,11 +35,8 @@ public extension Assertion where Subject == () throws -> Any {
     @discardableResult func doesNotThrow<T: Error & Equatable>(_ expectedError: T, file: StaticString = #filePath, line: UInt = #line) -> Self {
         do {
             _ = try expression()()
-            return self
         } catch {
-            if error as? T == expectedError {
-                XCTFail("\(expectedError) was thrown", file: file, line: line)
-            }
+            XCTAssertFalse(error as? T == expectedError, "\(expectedError) was thrown", file: file, line: line)
         }
         return self
     }
@@ -51,11 +45,8 @@ public extension Assertion where Subject == () throws -> Any {
         do {
             _ = try expression()()
             XCTFail("\(expectedError) was not thrown", file: file, line: line)
-            return self
         } catch {
-            if !(type(of: error) == T.self) {
-                XCTFail("\(error) is not \(expectedError)", file: file, line: line)
-            }
+            XCTAssertTrue(type(of: error) == T.self, "\(error) is not \(expectedError)", file: file, line: line)
         }
         return self
     }
@@ -63,11 +54,8 @@ public extension Assertion where Subject == () throws -> Any {
     @discardableResult func doesNotThrow<T: Error>(_ expectedError: T.Type, file: StaticString = #filePath, line: UInt = #line) -> Self {
         do {
             _ = try expression()()
-            return self
         } catch {
-            if type(of: error) == T.self {
-                XCTFail("\(expectedError) was thrown", file: file, line: line)
-            }
+            XCTAssertFalse(type(of: error) == T.self, "\(expectedError) was thrown", file: file, line: line)
         }
         return self
     }
