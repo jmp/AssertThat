@@ -4,17 +4,14 @@ public extension Assertion where Subject == () throws -> Any {
     @discardableResult func throwsAnError(file: StaticString = #filePath, line: UInt = #line) -> Self {
         do {
             _ = try expression()()
-            XCTFail("nothing was thrown", file: file, line: line)
-            return self
-        } catch {
-            return self
-        }
+            XCTFail("no error was thrown", file: file, line: line)
+        } catch {}
+        return self
     }
 
     @discardableResult func doesNotThrowAnError(file: StaticString = #filePath, line: UInt = #line) -> Self {
         do {
             _ = try expression()()
-            return self
         } catch {
             XCTFail("\(error) was thrown", file: file, line: line)
         }
