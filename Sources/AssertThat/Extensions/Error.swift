@@ -4,13 +4,10 @@ public extension Assertion where Subject: Error & Equatable {
     @discardableResult func isThrownBy<T>(_ block: () throws -> T, file: StaticString = #filePath, line: UInt = #line) -> Self {
         do {
             _ = try block()
+            XCTFail("\(subject) was not thrown", file: file, line: line)
         } catch {
-            if error as? Subject != subject {
-                XCTFail("\(error) is not \(subject)", file: file, line: line)
-            }
-            return self
+            XCTAssertTrue(error as? Subject == subject, "\(error) is not \(subject)", file: file, line: line)
         }
-        XCTFail("\(subject) was not thrown", file: file, line: line)
         return self
     }
 
@@ -18,9 +15,7 @@ public extension Assertion where Subject: Error & Equatable {
         do {
             _ = try block()
         } catch {
-            if error as? Subject == subject {
-                XCTFail("\(subject) was thrown", file: file, line: line)
-            }
+            XCTAssertFalse(error as? Subject == subject, "\(subject) was thrown", file: file, line: line)
         }
         return self
     }
