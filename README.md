@@ -26,7 +26,7 @@ It should also allow the use of extensions to support custom assertions.
 
 ## How does it work
 
-It makes use of Swift generics and extensions. The generic function `assertThat` function returns an
+It makes use of Swift generics and extensions. The generic function `assertThat` returns an
 `Assertion` struct holding the subject of the assertion. Literally everything else is implemented as
 a extensions of `Assertion` whose subject is of particular type or conforms to a particular protocol.
 
