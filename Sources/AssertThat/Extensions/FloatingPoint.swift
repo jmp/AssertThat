@@ -12,12 +12,12 @@ public extension Assertion where Subject: FloatingPoint {
     }
 
     @discardableResult func isNaN(file: StaticString = #filePath, line: UInt = #line) -> Self {
-        XCTAssertTrue(subject.isNaN)
+        XCTAssertTrue(subject.isNaN, file: file, line: line)
         return self
     }
 
     @discardableResult func isNotNaN(file: StaticString = #filePath, line: UInt = #line) -> Self {
-        XCTAssertFalse(subject.isNaN)
+        XCTAssertFalse(subject.isNaN, file: file, line: line)
         return self
     }
 }
