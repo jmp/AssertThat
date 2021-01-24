@@ -61,19 +61,4 @@ final class NumericTests: SuppressableTestCase {
         suppress { assertThat(-1).isNotNegative() }
         XCTAssertEqual(1, suppressedIssues)
     }
-
-    static var allTests = [
-        ("testIsZeroSuccess", testIsZeroSuccess),
-        ("testIsZeroFailure", testIsZeroFailure),
-        ("testIsNotZeroSuccess", testIsNotZeroSuccess),
-        ("testIsNotZeroFailure", testIsNotZeroFailure),
-        ("testIsPositiveSuccess", testIsPositiveSuccess),
-        ("testIsPositiveFailure", testIsPositiveFailure),
-        ("testIsNotPositiveSuccess", testIsNotPositiveSuccess),
-        ("testIsNotPositiveFailure", testIsNotPositiveFailure),
-        ("testIsNegativeSuccess", testIsNegativeSuccess),
-        ("testIsNegativeFailure", testIsNegativeFailure),
-        ("testIsNotNegativeSuccess", testIsNotNegativeSuccess),
-        ("testIsNotNegativeailure", testIsNotNegativeFailure),
-    ]
 }

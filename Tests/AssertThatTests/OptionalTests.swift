@@ -21,11 +21,4 @@ final class OptionalTests: SuppressableTestCase {
         suppress { assertThat(nil as Bool?).isNotNil() }
         XCTAssertEqual(1, suppressedIssues)
     }
-
-    static var allTests = [
-        ("testIsNilSuccess", testIsNilSuccess),
-        ("testIsNilFailure", testIsNilFailure),
-        ("testIsNotNilSuccess", testIsNotNilSuccess),
-        ("testIsNotNilFailure", testIsNotNilFailure),
-    ]
 }

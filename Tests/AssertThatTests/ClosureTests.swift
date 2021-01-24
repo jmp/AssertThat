@@ -96,19 +96,4 @@ final class ClosureTests: SuppressableTestCase {
         }
         XCTAssertEqual(1, suppressedIssues)
     }
-
-    static var allTests = [
-        ("testThrowsAnErrorSuccess", testThrowsAnErrorSuccess),
-        ("testThrowsAnErrorFailure", testThrowsAnErrorFailure),
-        ("testDoesNotThrowAnErrorSuccess", testDoesNotThrowAnErrorSuccess),
-        ("testDoesNotThrowAnErrorFailure", testDoesNotThrowAnErrorFailure),
-        ("testThrowsSuccess", testThrowsSuccess),
-        ("testThrowsFailure", testThrowsFailure),
-        ("testDoesNotThrowSuccess", testDoesNotThrowSuccess),
-        ("testDoesNotThrowFailure", testDoesNotThrowFailure),
-        ("testThrowsErrorTypeSuccess", testThrowsErrorTypeSuccess),
-        ("testThrowsErrorTypeFailure", testThrowsErrorTypeFailure),
-        ("testDoesNotThrowErrorTypeSuccess", testDoesNotThrowErrorTypeSuccess),
-        ("testDoesNotThrowErrorTypeFailure", testDoesNotThrowErrorTypeFailure),
-    ]
 }

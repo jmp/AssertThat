@@ -101,26 +101,4 @@ final class StringProtocolTests: SuppressableTestCase {
         suppress { assertThat("foo").doesNotMatch("^fo.$") }
         XCTAssertEqual(1, suppressedIssues)
     }
-
-    static var allTests = [
-        ("testIsEmptySuccess", testIsEmptySuccess),
-        ("testIsEmptyFailure", testIsEmptyFailure),
-        ("testIsNotEmptySuccess", testIsNotEmptySuccess),
-        ("testIsNotEmptyFailure", testIsNotEmptyFailure),
-        ("testStartsWithSuccess", testStartsWithSuccess),
-        ("testStartsWithFailure", testStartsWithFailure),
-        ("testDoesNotStartWithSuccess", testDoesNotStartWithSuccess),
-        ("testDoesNotStartWithFailure", testDoesNotStartWithFailure),
-        ("testEndsWithSuccess", testEndsWithSuccess),
-        ("testEndsWithFailure", testEndsWithFailure),
-        ("testDoesNotEndWithSuccess", testDoesNotEndWithSuccess),
-        ("testContainsSuccess", testContainsSuccess),
-        ("testContainsFailure", testContainsFailure),
-        ("testDoesNotContainSuccess", testDoesNotContainSuccess),
-        ("testDoesNotContainFailure", testDoesNotContainFailure),
-        ("testMatchesSuccess", testMatchesSuccess),
-        ("testMatchesFailure", testMatchesFailure),
-        ("testDoesNotMatchSuccess", testDoesNotMatchSuccess),
-        ("testDoesNotMatchFailure", testDoesNotMatchFailure),
-    ]
 }

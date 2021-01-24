@@ -103,23 +103,4 @@ final class ComparableTests: SuppressableTestCase {
         }
         XCTAssertEqual(1, suppressedIssues)
     }
-
-    static var allTests = [
-        ("testIsLessThanSuccess", testIsLessThanSuccess),
-        ("testIsLessThanFailure", testIsLessThanFailure),
-        ("testIsLessThanOrEqualToSuccess", testIsLessThanOrEqualToSuccess),
-        ("testIsLessThanOrEqualToFailure", testIsLessThanOrEqualToFailure),
-        ("testIsGreaterThanSuccess", testIsGreaterThanSuccess),
-        ("testIsGreaterThanFailure", testIsGreaterThanFailure),
-        ("testIsGreaterThanOrEqualToSuccess", testIsGreaterThanOrEqualToSuccess),
-        ("testIsGreaterThanOrEqualToFailure", testIsGreaterThanOrEqualToFailure),
-        ("testIsBetweenSuccess", testIsBetweenSuccess),
-        ("testIsBetweenFailure", testIsBetweenFailure),
-        ("testIsStrictlyBetweenSuccess", testIsStrictlyBetweenSuccess),
-        ("testIsStrictlyBetweenFailure", testIsStrictlyBetweenFailure),
-        ("testIsNotBetweenSuccess", testIsNotBetweenSuccess),
-        ("testIsNotBetweenFailure", testIsNotBetweenFailure),
-        ("testIsNotStrictlyBetweenSuccess", testIsNotStrictlyBetweenSuccess),
-        ("testIsNotStrictlyBetweenFailure", testIsNotStrictlyBetweenFailure),
-    ]
 }

@@ -21,11 +21,4 @@ final class BoolTests: SuppressableTestCase {
         suppress { assertThat(true).isFalse() }
         XCTAssertEqual(1, suppressedIssues)
     }
-
-    static var allTests = [
-        ("testIsTrueSuccess", testIsTrueSuccess),
-        ("testIsTrueFailure", testIsTrueFailure),
-        ("testIsFalseSuccess", testIsFalseSuccess),
-        ("testIsFalseFailure", testIsFalseFailure),
-    ]
 }

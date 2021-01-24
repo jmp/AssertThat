@@ -6,8 +6,4 @@ final class AssertThatTests: XCTestCase {
         let assertion = assertThat("dummy") as Any
         XCTAssertTrue(assertion is Assertion<String>)
     }
-
-    static var allTests = [
-        ("testAssertThatReturnsAssertion", testAssertThatReturnsAssertion),
-    ]
 }

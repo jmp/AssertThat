@@ -44,11 +44,4 @@ final class ErrorTests: SuppressableTestCase {
         }
         XCTAssertEqual(1, suppressedIssues)
     }
-
-    static var allTests = [
-        ("testIsThrownBySuccess", testIsThrownBySuccess),
-        ("testIsThrownByFailure", testIsThrownByFailure),
-        ("testIsNotThrownBySuccess", testIsNotThrownBySuccess),
-        ("testIsNotThrownByFailure", testIsNotThrownByFailure),
-    ]
 }

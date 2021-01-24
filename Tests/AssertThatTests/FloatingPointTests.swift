@@ -53,13 +53,4 @@ final class FloatingPointTests: SuppressableTestCase {
         }
         XCTAssertEqual(2, suppressedIssues)
     }
-
-    static var allTests = [
-        ("testIsCloseToSuccess", testIsCloseToSuccess),
-        ("testIsCloseToFailure", testIsCloseToFailure),
-        ("testIsNotCloseToSuccess", testIsNotCloseToSuccess),
-        ("testIsNotCloseToFailure", testIsNotCloseToFailure),
-        ("testIsNaNSuccess", testIsNaNSuccess),
-        ("testIsNaNFailure", testIsNaNFailure),
-    ]
 }

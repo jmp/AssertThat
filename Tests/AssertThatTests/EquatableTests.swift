@@ -52,13 +52,4 @@ final class EquatableTests: SuppressableTestCase {
         suppress { assertThat(1).isNotIn([1]) }
         XCTAssertEqual(1, suppressedIssues)
     }
-
-    static var allTests = [
-        ("testIsEqualToSuccess", testIsEqualToSuccess),
-        ("testIsEqualToFailure", testIsEqualToFailure),
-        ("testIsNotEqualToPositive", testIsNotEqualToSuccess),
-        ("testIsNotEqualToNegative", testIsNotEqualToFailure),
-        ("testIsInSuccess", testIsInSuccess),
-        ("testIsInFailure", testIsInFailure),
-    ]
 }
