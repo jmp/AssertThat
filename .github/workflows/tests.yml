@@ -20,7 +20,16 @@ jobs:
     - name: Build
       run: swift build
     - name: Run tests
-      run: swift test -c release
+      run: swift test --enable-code-coverage
+    - name: Prepare code coverage
+      run: mkdir -p ./coverage && \
+        xcrun llvm-cov export -format=lcov
+              -instr-profile=.build/debug/codecov/default.profdata \
+              .build/debug/*.xctest/Contents/MacOS/*PackageTests > ./coverage/info.lcov
+    - name: Submit code coverage
+      uses: coverallsapp/github-action@v1.1.2
+      with:
+        github-token: ${{ secrets.COVERALLS_TOKEN }}
   linux:
     name: Linux
     runs-on: ubuntu-latest
@@ -32,4 +41,4 @@ jobs:
     - name: Build
       run: swift build
     - name: Run tests
-      run: swift test -c release --enable-test-discovery
+      run: swift test --enable-test-discovery
