@@ -15,8 +15,6 @@ jobs:
     name: macOS
     runs-on: macos-latest
     steps:
-    - name: Select Xcode version
-      run: sudo xcode-select -s /Applications/Xcode_12.4.app/Contents/Developer
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build
@@ -25,9 +23,10 @@ jobs:
       run: swift test --enable-code-coverage
     - name: Prepare code coverage
       run: mkdir -p ./coverage && \
-        xcrun llvm-cov export -format=lcov
-              -instr-profile=.build/debug/codecov/default.profdata \
-              .build/debug/*.xctest/Contents/MacOS/*PackageTests > ./coverage/info.lcov
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/llvm-cov export \
+        -format=lcov \
+        -instr-profile=.build/debug/codecov/default.profdata \
+        .build/debug/*.xctest/Contents/MacOS/*PackageTests > ./coverage/info.lcov
     - name: Submit code coverage
       uses: coverallsapp/github-action@v1.1.2
       with:
