@@ -36,7 +36,7 @@ final class ClosureTests: SuppressableTestCase {
         }
         XCTAssertEqual(1, suppressedIssues)
     }
-    
+
     func testThrowsSuccess() {
         suppress {
             assertThat { throw TestError.test }.throws(TestError.test)

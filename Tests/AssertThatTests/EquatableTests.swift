@@ -30,7 +30,6 @@ final class EquatableTests: SuppressableTestCase {
         XCTAssertEqual(0, suppressedIssues)
     }
 
-    
     func testIsInFailure() {
         suppress {
             assertThat(1).isIn([])
@@ -47,7 +46,6 @@ final class EquatableTests: SuppressableTestCase {
         XCTAssertEqual(0, suppressedIssues)
     }
 
-    
     func testIsNotInFailure() {
         suppress { assertThat(1).isNotIn([1]) }
         XCTAssertEqual(1, suppressedIssues)

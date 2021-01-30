@@ -1,7 +1,8 @@
 import XCTest
 
 public extension Assertion where Subject == () throws -> Any {
-    @discardableResult func throwsAnError(file: StaticString = #filePath, line: UInt = #line) -> Self {
+    @discardableResult
+    func throwsAnError(file: StaticString = #filePath, line: UInt = #line) -> Self {
         do {
             _ = try expression()()
             XCTFail("no error was thrown", file: file, line: line)
@@ -9,7 +10,8 @@ public extension Assertion where Subject == () throws -> Any {
         return self
     }
 
-    @discardableResult func doesNotThrowAnError(file: StaticString = #filePath, line: UInt = #line) -> Self {
+    @discardableResult
+    func doesNotThrowAnError(file: StaticString = #filePath, line: UInt = #line) -> Self {
         do {
             _ = try expression()()
         } catch {
@@ -18,7 +20,12 @@ public extension Assertion where Subject == () throws -> Any {
         return self
     }
 
-    @discardableResult func `throws`<T: Error & Equatable>(_ expectedError: T, file: StaticString = #filePath, line: UInt = #line) -> Self {
+    @discardableResult
+    func `throws`<T: Error & Equatable>(
+        _ expectedError: T,
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) -> Self {
         do {
             _ = try expression()()
             XCTFail("\(expectedError) was not thrown", file: file, line: line)
@@ -28,8 +35,12 @@ public extension Assertion where Subject == () throws -> Any {
         return self
     }
 
-    
-    @discardableResult func doesNotThrow<T: Error & Equatable>(_ expectedError: T, file: StaticString = #filePath, line: UInt = #line) -> Self {
+    @discardableResult
+    func doesNotThrow<T: Error & Equatable>(
+        _ expectedError: T,
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) -> Self {
         do {
             _ = try expression()()
         } catch {
@@ -38,7 +49,8 @@ public extension Assertion where Subject == () throws -> Any {
         return self
     }
 
-    @discardableResult func `throws`<T: Error>(_ expectedError: T.Type, file: StaticString = #filePath, line: UInt = #line) -> Self {
+    @discardableResult
+    func `throws`<T: Error>(_ expectedError: T.Type, file: StaticString = #filePath, line: UInt = #line) -> Self {
         do {
             _ = try expression()()
             XCTFail("\(expectedError) was not thrown", file: file, line: line)
@@ -48,7 +60,8 @@ public extension Assertion where Subject == () throws -> Any {
         return self
     }
 
-    @discardableResult func doesNotThrow<T: Error>(_ expectedError: T.Type, file: StaticString = #filePath, line: UInt = #line) -> Self {
+    @discardableResult
+    func doesNotThrow<T: Error>(_ expectedError: T.Type, file: StaticString = #filePath, line: UInt = #line) -> Self {
         do {
             _ = try expression()()
         } catch {
