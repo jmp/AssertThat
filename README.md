@@ -1,4 +1,6 @@
 # AssertThat
+![Lint status](https://github.com/jmp/assert-that/workflows/lint/badge.svg)
+![Tests status](https://github.com/jmp/assert-that/workflows/tests/badge.svg)
 
 This library tries to make AssertJ-style readable assertions usable in Swift.
 
