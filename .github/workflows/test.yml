@@ -1,5 +1,15 @@
-name: test
-on: [push, pull_request]
+name: Test
+on:
+  push:
+    paths-ignore:
+    - '**/*.md'
+    - '**/*.yml'
+    - 'LICENSE'
+  pull_request:
+    paths-ignore:
+    - '**/*.md'
+    - '**/*.yml'
+    - 'LICENSE'
 jobs:
   macos:
     name: macOS
