@@ -10,7 +10,7 @@ jobs:
     - name: Build
       run: swift build
     - name: Run tests
-      run: swift test
+      run: swift test -c release
   linux:
     name: Linux
     runs-on: ubuntu-latest
@@ -22,4 +22,4 @@ jobs:
     - name: Build
       run: swift build
     - name: Run tests
-      run: swift test --enable-test-discovery
+      run: swift test -c release --enable-test-discovery
