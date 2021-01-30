@@ -2,9 +2,9 @@
 ![Lint status](https://github.com/jmp/assert-that/workflows/lint/badge.svg)
 ![Tests status](https://github.com/jmp/assert-that/workflows/tests/badge.svg)
 
-This library tries to make AssertJ-style readable assertions usable in Swift.
+This library tries to make [AssertJ](https://assertj.github.io/doc/)-style readable assertions usable in Swift.
 
-It is currently experimental and **super work in progress**.
+It is currently experimental and **super work in progress**. 🚧
 
 ## Motivation
 
