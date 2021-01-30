@@ -3,12 +3,12 @@ on:
   push:
     paths-ignore:
     - '**/*.md'
-    - '**/*.yml'
+    - '.github/workflows/lint.yml'
     - 'LICENSE'
   pull_request:
     paths-ignore:
     - '**/*.md'
-    - '**/*.yml'
+    - '.github/workflows/lint.yml'
     - 'LICENSE'
 jobs:
   macos:
