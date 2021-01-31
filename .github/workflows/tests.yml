@@ -15,6 +15,9 @@ jobs:
     name: macOS
     runs-on: macos-latest
     steps:
+    - name: Select latest available Xcode
+      uses: maxim-lobanov/setup-xcode@1.2.1
+      with: { 'xcode-version': 'latest' }
     - name: Checkout
       uses: actions/checkout@v2
     - name: Run tests
