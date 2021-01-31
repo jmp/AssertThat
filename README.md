@@ -1,6 +1,7 @@
 # AssertThat
 ![Lint status](https://github.com/jmp/assert-that/workflows/lint/badge.svg)
 ![Tests status](https://github.com/jmp/assert-that/workflows/tests/badge.svg)
+[![codecov](https://codecov.io/gh/jmp/assert-that/branch/master/graph/badge.svg?token=P6HAB7OM3L)](https://codecov.io/gh/jmp/assert-that)
 
 This library tries to make [AssertJ](https://assertj.github.io/doc/)-style readable assertions usable in Swift.
 
