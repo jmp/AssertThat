@@ -12,6 +12,18 @@ public extension Assertion where Subject: Numeric {
         XCTAssertNotEqual(subject, 0, file: file, line: line)
         return self
     }
+
+    @discardableResult
+    func isOne(file: StaticString = #filePath, line: UInt = #line) -> Self {
+        XCTAssertEqual(subject, 1, file: file, line: line)
+        return self
+    }
+
+    @discardableResult
+    func isNotOne(file: StaticString = #filePath, line: UInt = #line) -> Self {
+        XCTAssertNotEqual(subject, 1, file: file, line: line)
+        return self
+    }
 }
 
 public extension Assertion where Subject: Numeric & Comparable {

@@ -22,6 +22,26 @@ final class NumericTests: SuppressableTestCase {
         XCTAssertEqual(1, suppressedIssues)
     }
 
+    func testIsOneSuccess() {
+        suppress { assertThat(1).isOne() }
+        XCTAssertEqual(0, suppressedIssues)
+    }
+
+    func testIsOneFailure() {
+        suppress { assertThat(0).isOne() }
+        XCTAssertEqual(1, suppressedIssues)
+    }
+
+    func testIsNotOneSuccess() {
+        suppress { assertThat(0).isNotOne() }
+        XCTAssertEqual(0, suppressedIssues)
+    }
+
+    func testIsNotOneFailure() {
+        suppress { assertThat(1).isNotOne() }
+        XCTAssertEqual(1, suppressedIssues)
+    }
+
     func testIsPositiveSuccess() {
         suppress { assertThat(1).isPositive() }
         XCTAssertEqual(0, suppressedIssues)
