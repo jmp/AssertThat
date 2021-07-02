@@ -27,7 +27,6 @@ jobs:
     - name: Upload coverage
       uses: codecov/codecov-action@v1
       with:
-        flags: macOS
         fail_ci_if_error: true
   linux:
     name: Linux
@@ -35,16 +34,7 @@ jobs:
     container:
       image: swift:5.4
     steps:
-    - name: Install dependencies
-      run: sudo apt-get install curl
     - name: Checkout
       uses: actions/checkout@v2
     - name: Run tests
-      run: swift test --enable-code-coverage
-    - name: Convert coverage to lcov
-      run: llvm-cov export -format=lcov .build/x86_64-unknown-linux-gnu/debug/*PackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > coverage.lcov
-    - name: Upload coverage
-      uses: codecov/codecov-action@v1
-      with:
-        flags: Linux
-        fail_ci_if_error: true
+      run: swift test
