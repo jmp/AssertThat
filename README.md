@@ -30,8 +30,10 @@ It should also allow the use of extensions to support custom assertions.
 ## Existing solutions
 
 As far as I know, there is no port of AssertJ or similar library available for Swift. The closest match is
-[Swift Hamcrest](https://github.com/nschum/SwiftHamcrest), which is quite mature and a very nice
-alternative for Swift. The main difference is the syntax and how the assertions read.
+probably [Swift Hamcrest](https://github.com/nschum/SwiftHamcrest), which is quite mature and a very
+nice alternative for Swift. The main difference is the syntax and how the assertions read. Another
+noteworthy project is [Nimble](https://github.com/Quick/Nimble), which also has slightly different way
+of expressing the assertions. 
 
 ## How does it work
 
