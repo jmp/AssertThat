@@ -35,6 +35,8 @@ jobs:
     container:
       image: swift:5.4
     steps:
+    - name: Install dependencies
+      run: sudo apt-get install curl
     - name: Checkout
       uses: actions/checkout@v2
     - name: Run tests
