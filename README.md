@@ -110,10 +110,32 @@ assertThat(someString)
     .doesNotMatch("^Test$")
 ```
 
+Sequences:
+
+```swift
+assertThat(sequence).contains(x)
+assertThat(sequence).doesNotContain(x)
+```
+
+Collections:
+
+```swift
+assertThat(collection).isEmpty()
+assertThat(collection).isNotEmpty()
+```
+
+Note that since a `Collection` also conforms to the `Sequence` protocol,
+you can use any of the assertions of `Sequence` with collections:
+
+```swift
+assertThat(collection).contains(x)
+assertThat(collection).doesNotContain(x)
+```
+
 Errors:
 
 ```swift
-assertThat { someBlockOfCode }.throws(someSpecificError)
+assertThat { someBlockOfCode }.throws(SomeErrorType.someSpecificError)
 assertThat { someBlockOfCode }.throws(SomeErrorType.self)
 assertThat { someBlockOfCode }.doesNotThrow(someError)
 assertThat { someBlockOfCode }.throwsAnError() // Throws any error
