@@ -26,7 +26,7 @@ jobs:
     - name: Convert coverage to lcov
       run: xcrun llvm-cov export -format=lcov .build/debug/*PackageTests.xctest/Contents/MacOS/*PackageTests -instr-profile .build/debug/codecov/default.profdata > coverage.lcov
     - name: Upload coverage
-      uses: codecov/codecov-action@v1
+      uses: codecov/codecov-action@v2
       with:
         fail_ci_if_error: true
   linux:
