@@ -9,7 +9,7 @@ public extension Assertion where Subject == () throws -> Any {
 
     @discardableResult
     func doesNotThrowAnError(file: StaticString = #filePath, line: UInt = #line) -> Self {
-        XCTAssertNoThrow(try subject(), "an error was thrown", file: file, line: line);
+        XCTAssertNoThrow(try subject(), "an error was thrown", file: file, line: line)
         return self
     }
 
