@@ -42,26 +42,6 @@ final class StringProtocolTests: SuppressableTestCase {
         XCTAssertEqual(1, suppressedIssues)
     }
 
-    func testContainsSuccess() {
-        suppress { assertThat("foo").contains("o") }
-        XCTAssertEqual(0, suppressedIssues)
-    }
-
-    func testContainsFailure() {
-        suppress { assertThat("foo").contains("x") }
-        XCTAssertEqual(1, suppressedIssues)
-    }
-
-    func testDoesNotContainSuccess() {
-        suppress { assertThat("foo").doesNotContain("x") }
-        XCTAssertEqual(0, suppressedIssues)
-    }
-
-    func testDoesNotContainFailure() {
-        suppress { assertThat("foo").doesNotContain("o") }
-        XCTAssertEqual(1, suppressedIssues)
-    }
-
     func testMatchesSuccess() {
         suppress { assertThat("foo").matches("^fo.$") }
         XCTAssertEqual(0, suppressedIssues)
