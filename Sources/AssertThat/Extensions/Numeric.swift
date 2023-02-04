@@ -2,18 +2,6 @@ import XCTest
 
 public extension Assertion where Subject: Numeric {
     @discardableResult
-    func isZero(file: StaticString = #filePath, line: UInt = #line) -> Self {
-        XCTAssertEqual(subject, 0, file: file, line: line)
-        return self
-    }
-
-    @discardableResult
-    func isNotZero(file: StaticString = #filePath, line: UInt = #line) -> Self {
-        XCTAssertNotEqual(subject, 0, file: file, line: line)
-        return self
-    }
-
-    @discardableResult
     func isOne(file: StaticString = #filePath, line: UInt = #line) -> Self {
         XCTAssertEqual(subject, 1, file: file, line: line)
         return self
