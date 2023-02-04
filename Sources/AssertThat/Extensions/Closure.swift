@@ -3,20 +3,13 @@ import XCTest
 public extension Assertion where Subject == () throws -> Any {
     @discardableResult
     func throwsAnError(file: StaticString = #filePath, line: UInt = #line) -> Self {
-        do {
-            _ = try subject()
-            XCTFail("no error was thrown", file: file, line: line)
-        } catch {}
+        XCTAssertThrowsError(try subject(), "no error was thrown", file: file, line: line)
         return self
     }
 
     @discardableResult
     func doesNotThrowAnError(file: StaticString = #filePath, line: UInt = #line) -> Self {
-        do {
-            _ = try subject()
-        } catch {
-            XCTFail("\(error) was thrown", file: file, line: line)
-        }
+        XCTAssertNoThrow(try subject(), "an error was thrown", file: file, line: line);
         return self
     }
 
@@ -26,10 +19,7 @@ public extension Assertion where Subject == () throws -> Any {
         file: StaticString = #filePath,
         line: UInt = #line
     ) -> Self {
-        do {
-            _ = try subject()
-            XCTFail("\(expectedError) was not thrown", file: file, line: line)
-        } catch {
+        XCTAssertThrowsError(try subject(), "\(expectedError) was not thrown", file: file, line: line) { error in
             XCTAssertTrue(error as? T == expectedError, "\(error) is not \(expectedError)", file: file, line: line)
         }
         return self
@@ -51,10 +41,7 @@ public extension Assertion where Subject == () throws -> Any {
 
     @discardableResult
     func `throws`<T: Error>(_ expectedError: T.Type, file: StaticString = #filePath, line: UInt = #line) -> Self {
-        do {
-            _ = try subject()
-            XCTFail("\(expectedError) was not thrown", file: file, line: line)
-        } catch {
+        XCTAssertThrowsError(try subject(), "\(expectedError) was not thrown", file: file, line: line) { error in
             XCTAssertTrue(type(of: error) == T.self, "\(error) is not \(expectedError)", file: file, line: line)
         }
         return self
