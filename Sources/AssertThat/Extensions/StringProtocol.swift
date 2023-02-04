@@ -2,18 +2,6 @@ import XCTest
 
 public extension Assertion where Subject: StringProtocol {
     @discardableResult
-    func isEmpty(file: StaticString = #filePath, line: UInt = #line) -> Self {
-        XCTAssertTrue(subject.isEmpty, "\"\(subject)\" is not empty", file: file, line: line)
-        return self
-    }
-
-    @discardableResult
-    func isNotEmpty(file: StaticString = #filePath, line: UInt = #line) -> Self {
-        XCTAssertFalse(subject.isEmpty, "\"\(subject)\" is empty", file: file, line: line)
-        return self
-    }
-
-    @discardableResult
     func startsWith(_ prefix: Subject, file: StaticString = #filePath, line: UInt = #line) -> Self {
         XCTAssertTrue(
             subject.starts(with: prefix),

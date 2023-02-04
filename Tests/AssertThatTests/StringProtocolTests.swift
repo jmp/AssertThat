@@ -2,26 +2,6 @@ import XCTest
 import AssertThat
 
 final class StringProtocolTests: SuppressableTestCase {
-    func testIsEmptySuccess() {
-        suppress { assertThat("").isEmpty() }
-        XCTAssertEqual(0, suppressedIssues)
-    }
-
-    func testIsEmptyFailure() {
-        suppress { assertThat("foo").isEmpty() }
-        XCTAssertEqual(1, suppressedIssues)
-    }
-
-    func testIsNotEmptySuccess() {
-        suppress { assertThat("foo").isNotEmpty() }
-        XCTAssertEqual(0, suppressedIssues)
-    }
-
-    func testIsNotEmptyFailure() {
-        suppress { assertThat("").isNotEmpty() }
-        XCTAssertEqual(1, suppressedIssues)
-    }
-
     func testStartsWithSuccess() {
         suppress { assertThat("foo").startsWith("f") }
         XCTAssertEqual(0, suppressedIssues)
