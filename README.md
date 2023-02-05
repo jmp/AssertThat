@@ -57,6 +57,8 @@ To implement assertions for your own types, chances are some of the built-in one
 
 ## Example usage
 
+See example repository in [AssertThatExample](https://github.com/jmp/AssertThatExample).
+
 First, import the module:
 
 ```swift
