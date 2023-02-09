@@ -22,7 +22,7 @@ class SuppressableTestCase: XCTestCase {
         if suppressing {
             suppressedIssues += 1
         } else {
-            super.record(
+            super.recordFailure(
                 withDescription: description,
                 inFile: filePath,
                 atLine: lineNumber,
