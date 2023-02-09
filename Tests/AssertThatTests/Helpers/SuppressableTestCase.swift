@@ -2,10 +2,15 @@ import XCTest
 
 class SuppressableTestCase: XCTestCase {
     private(set) var suppressedIssues = 0
+    private var suppressing = false
 
 #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
     override func record(_ issue: XCTIssue) {
-        suppressedIssues += 1
+        if suppressing {
+            suppressedIssues += 1
+        } else {
+            super.record(issue)
+        }
     }
 #else
     override func recordFailure(
@@ -14,12 +19,23 @@ class SuppressableTestCase: XCTestCase {
         atLine lineNumber: Int,
         expected: Bool
     ) {
-        suppressedIssues += 1
+        if suppressing {
+            suppressedIssues += 1
+        } else {
+            super.record(
+                withDescription: description,
+                inFile: filePath,
+                atLine: lineNumber,
+                expected: expected
+            )
+        }
     }
 #endif
 
     func suppress(_ block: () -> Void) {
         suppressedIssues = 0
+        suppressing = true
         block()
+        suppressing = false
     }
 }
